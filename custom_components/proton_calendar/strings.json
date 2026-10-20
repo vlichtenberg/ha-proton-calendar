@@ -1,0 +1,89 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sign in to Proton",
+        "description": "Sign in with your Proton account. Your password is only used to sign in and unlock your encryption keys; it is never stored.",
+        "data": {
+          "username": "Proton email or username",
+          "password": "Password"
+        }
+      },
+      "human_verification": {
+        "title": "Human verification",
+        "description": "Proton wants to verify that you are human before allowing this sign-in.\n\n1. Open [the Proton verification page]({url}) and solve the CAPTCHA.\n2. Wait until the page confirms the verification.\n3. Come back here and select **Submit**."
+      },
+      "totp": {
+        "title": "Two-factor authentication",
+        "description": "Enter the 6-digit code from your authenticator app (or a recovery code).",
+        "data": {
+          "totp": "Code"
+        }
+      },
+      "mailbox_password": {
+        "title": "Mailbox password",
+        "description": "Your account uses a separate mailbox password (two-password mode). Enter it to unlock your encrypted calendars.",
+        "data": {
+          "mailbox_password": "Mailbox password"
+        }
+      },
+      "calendars": {
+        "title": "Choose calendars",
+        "description": "Select the Proton calendars to add to Home Assistant. Each one becomes a calendar entity you can use in automations.",
+        "data": {
+          "calendars": "Calendars"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sign in to Proton again",
+        "description": "The Proton session for {username} has expired or was revoked. Enter your password to sign in again.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to Proton. Try again later.",
+      "invalid_auth": "Incorrect username or password.",
+      "invalid_2fa": "The two-factor code was not accepted.",
+      "invalid_mailbox_password": "This password does not unlock your account keys.",
+      "fido2_only": "Your account only has a security key as second factor. Add an authenticator app (TOTP) in your Proton security settings to use this integration.",
+      "hv_failed": "Proton did not accept the verification, so a new CAPTCHA was requested. Open the link again, solve it, and select Submit only after the page confirms.",
+      "no_calendars": "Select at least one calendar.",
+      "unknown": "Unexpected error, check the logs."
+    },
+    "abort": {
+      "already_configured": "This Proton account is already configured.",
+      "no_calendars_found": "No calendars were found in this Proton account.",
+      "reauth_successful": "Signed in again successfully.",
+      "wrong_account": "You signed in with a different Proton account than the one being re-authenticated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Proton Calendar options",
+        "data": {
+          "calendars": "Calendars",
+          "lookahead_days": "Days to cache ahead",
+          "scan_interval": "Refresh interval",
+          "filters": "Text filters",
+          "show_sidebar_panel": "Show Calendar in the sidebar"
+        },
+        "data_description": {
+          "lookahead_days": "Events in this period are kept in memory for fast state updates and triggers. The calendar panel can still browse further ahead.",
+          "scan_interval": "How often Proton is checked for changes.",
+          "filters": "Only events whose title or description contains one of these texts (case-insensitive) are passed to Home Assistant. Leave empty to pass all events of the selected calendars.",
+          "show_sidebar_panel": "Home Assistant's Calendar panel is shared by all calendars and users. Turning this off hides it for everyone; your calendar entities keep working."
+        }
+      }
+    },
+    "error": {
+      "no_calendars": "Select at least one calendar."
+    },
+    "abort": {
+      "cannot_connect": "Could not load your calendars from Proton. Try again later.",
+      "not_loaded": "The integration is not running. Fix the problem shown on the integration first (for example, sign in again), then try again."
+    }
+  }
+}

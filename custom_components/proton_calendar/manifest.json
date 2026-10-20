@@ -1,0 +1,14 @@
+{
+  "domain": "proton_calendar",
+  "name": "Proton Calendar",
+  "after_dependencies": ["frontend"],
+  "codeowners": ["@vlichtenberg"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/vlichtenberg/ha-proton-calendar",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/vlichtenberg/ha-proton-calendar/issues",
+  "requirements": ["python-dateutil>=2.8.2"],
+  "version": "0.1.0"
+}

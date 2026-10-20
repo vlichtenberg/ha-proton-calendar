@@ -1,0 +1,6 @@
+Proton Calendar for Home Assistant
+Copyright (c) 2026 Vincent Lichtenberg
+
+Portions of custom_components/proton_calendar/proton/srp.py are ported from
+ProtonMail/go-srp (https://github.com/ProtonMail/go-srp),
+Copyright (c) 2019 Proton Technologies AG, MIT License.

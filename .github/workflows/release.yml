@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  zip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set version from tag
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          jq --arg v "$version" '.version = $v' custom_components/proton_calendar/manifest.json > manifest.tmp
+          mv manifest.tmp custom_components/proton_calendar/manifest.json
+      - name: Zip integration
+        run: cd custom_components/proton_calendar && zip -r ../../proton_calendar.zip . -x '__pycache__/*'
+      - name: Upload asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$GITHUB_REF_NAME" proton_calendar.zip --clobber
